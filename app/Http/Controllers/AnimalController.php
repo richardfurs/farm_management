@@ -27,6 +27,7 @@ class AnimalController extends Controller
             $query->where('user_id', $user->id);
         })
         ->with('farm:id,name')
+        ->orderBy('id', 'asc')
         ->paginate(10);
     
         $farms = Farm::where('user_id', $user->id)->select('id', 'name')->get();

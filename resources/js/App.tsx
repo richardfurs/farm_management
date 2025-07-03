@@ -41,10 +41,16 @@ const router = createBrowserRouter([
 	  path: '/login',
 	  element: <Login />,
 		loader: async () => {
-			const response = await AsyncFetch('/api/user');
-			if (response.ok) {
-				throw Response.redirect('/farms');
+			try {
+				const response = await AsyncFetch('api/user');
+	
+				if (response.ok) {
+					return Response.redirect('/farms');
+				}
+			} catch (error) {
+				console.error('Auth check failed:', error);
 			}
+	
 			return null;
 		}
 	},
