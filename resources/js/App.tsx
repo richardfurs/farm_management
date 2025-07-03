@@ -40,6 +40,13 @@ const router = createBrowserRouter([
 	{
 	  path: '/login',
 	  element: <Login />,
+		loader: async () => {
+			const response = await AsyncFetch('/api/user');
+			if (response.ok) {
+				throw Response.redirect('/farms');
+			}
+			return null;
+		}
 	},
 	{
 	  element: <AuthLayout />,
