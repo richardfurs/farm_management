@@ -18,7 +18,7 @@ const AsyncFetch = async (url: string, data: any = null, method: string = 'GET')
 		...(data ? { body: JSON.stringify(data) } : {}),
 	}
 
-	const response = await fetch(url, options);
+	const response = await fetch(`${import.meta.env.VITE_DEV_BASE_URL}/${url}`, options);
 
 	return response;
 };

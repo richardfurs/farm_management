@@ -6,7 +6,7 @@ const Navigation = () => {
 	const navigate = useNavigate();
 
 	const logout = async () => {
-		const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/logout`, {}, 'POST');
+		const response = await AsyncFetch(`api/logout`, {}, 'POST');
 
 		if (response.ok) {
 			navigate('/login');

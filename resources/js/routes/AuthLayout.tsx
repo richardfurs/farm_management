@@ -3,7 +3,7 @@ import AsyncFetch from '@/utils/AsyncFetch';
 import Navigation from "@/components/Navigation";
 
 export async function authLoader() {
-	const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/user`);
+	const response = await AsyncFetch(`api/user`);
 
   if (response.ok) return response.json();
 

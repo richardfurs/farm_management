@@ -7,7 +7,7 @@ const FormActions = async ({ request }: { request: Request }) => {
 	const apiUrl = url.searchParams.get('_apiUrl');
 	const method = request.method;
 
-	const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/${apiUrl}`, payload, method);
+	const response = await AsyncFetch(`${apiUrl}`, payload, method);
 	const data = await response.json();
 
 	return data;

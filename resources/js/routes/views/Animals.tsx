@@ -48,7 +48,7 @@ const Animals = () => {
     event.preventDefault()
 
     if (page <= paginationData.last_page && page >= 1) {
-      const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/animals?page=${page}`);
+      const response = await AsyncFetch(`api/animals?page=${page}`);
 
       if (response.ok) {
         const newAnimals = await response.json();
@@ -93,7 +93,6 @@ const Animals = () => {
   }
 
   const editRecord = (record: Animal) => {
-    console.log('record', record)
     setModalTitle('Edit Animal');
     setModalMethod('patch');
     setFormData(record);
@@ -127,14 +126,7 @@ const Animals = () => {
         columns={columns} 
         records={records} 
         editRecord={editRecord} 
-        deleteRecord={deleteRecord} 
-        renderCell={(_record, key, value) => {
-          if (key === 'farm' && value && typeof value === 'object') {
-            return (value as { name?: string }).name ?? 'N/A';
-          }
-          return value;
-        }}
-        
+        deleteRecord={deleteRecord}
       />
 
       <Pagination pagination={paginationData} onPageChange={updatePagination}/>

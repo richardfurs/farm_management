@@ -41,7 +41,7 @@ const Farms = () => {
     event.preventDefault()
 
     if (page <= paginationData.last_page && page >= 1) {
-      const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/farms?page=${page}`);
+      const response = await AsyncFetch(`api/farms?page=${page}`);
 
       if (response.ok) {
         const newFarms = await response.json();

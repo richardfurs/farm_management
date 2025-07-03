@@ -22,7 +22,7 @@ const Login = () => {
 			credentials: 'include',
 		});
 
-		const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/login`, data, 'POST');
+		const response = await AsyncFetch(`api/login`, data, 'POST');
 
 		if (response.ok) {
 			navigate('/farms');

@@ -9,7 +9,7 @@ import AsyncFetch from '@/utils/AsyncFetch';
 import FormActions from '@/utils/FormActions';
 
 const getFarms = async (page: string) => {
-	const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/farms?page=${page}`);
+	const response = await AsyncFetch(`api/farms?page=${page}`);
 
 	if (response.ok) {
 		const data = await response.json();
@@ -20,7 +20,7 @@ const getFarms = async (page: string) => {
 }
 
 const getAnimals = async (page: string) => {
-	const response = await AsyncFetch(`${import.meta.env.VITE_DEV_BASE_URL}/api/animals?page=${page}`);
+	const response = await AsyncFetch(`api/animals?page=${page}`);
 
 	if (response.ok) {
 		const data = await response.json();
@@ -31,6 +31,12 @@ const getAnimals = async (page: string) => {
 }
 
 const router = createBrowserRouter([
+	{
+		path: '/',
+		loader: () => {
+			return Response.redirect('/farms');
+		},
+	},
 	{
 	  path: '/login',
 	  element: <Login />,
